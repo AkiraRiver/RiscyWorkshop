@@ -2,6 +2,7 @@ build*/
 *venv*/
 .cache/
 .DS_Store
+_codeql_detected_source_root
 
 *.bin
 *.elf
