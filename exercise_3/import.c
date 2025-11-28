@@ -31,7 +31,19 @@ void _start() __attribute__((section(".text.start")));
 
 void _start()
 {
-    // TODO: call resolve_import and host_call here
+    // Resolve the puts function (module=0 means current process/libc)
+    uint64_t puts_fn = resolve_import(0, "puts");
+
+    // Prepare arguments for host_call (puts takes a single string argument)
+    // We only need the first argument, others are unused
+    uint64_t args[13];
+    args[0] = (uint64_t)"Hello from RISC-V!";
+
+    // Call puts via host_call
+    host_call(puts_fn, args);
+
+    // Exit with code 0
+    exit(0);
 
     asm volatile("ebreak");
 }
