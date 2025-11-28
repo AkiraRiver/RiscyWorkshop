@@ -22,3 +22,6 @@ __pycache__/
 
 # Wine bootstrap
 !/.devcontainer/hello.exe
+
+# CodeQL
+_codeql_detected_source_root
