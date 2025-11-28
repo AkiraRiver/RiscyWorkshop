@@ -32,7 +32,7 @@ void _start() __attribute__((section(".text.start")));
 void _start()
 {
     // Resolve the puts function (module=0 uses already loaded C runtime)
-    uint64_t puts_fn = resolve_import(0, "puts");
+    uint64_t puts_fn = resolve_import((const char*)0, "puts");
     // Set up args with the string pointer as the first argument
     uint64_t args[13];
     args[0] = (uint64_t)"Hello from RISC-V!";
