@@ -31,10 +31,13 @@ void _start() __attribute__((section(".text.start")));
 
 void _start()
 {
-    // TODO: call resolve_import and host_call here
-    resolve_import("kernel32.dll", "GetCurrentThreadId");
-    uint64_t args[13] = {0};
-    host_call(0x12345678, args);
+    // Resolve the puts function (module=0 uses already loaded C runtime)
+    uint64_t puts_fn = resolve_import(0, "puts");
+    // Set up args with the string pointer as the first argument
+    uint64_t args[13];
+    args[0] = (uint64_t)"Hello from RISC-V!";
+    // Call puts via host_call
+    host_call(puts_fn, args);
     exit(0);
     asm volatile("ebreak");
 }
