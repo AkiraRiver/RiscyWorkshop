@@ -32,9 +32,6 @@ void _start() __attribute__((section(".text.start")));
 void _start()
 {
     // TODO: call resolve_import and host_call here
-    resolve_import("kernel32.dll", "GetCurrentThreadId");
-    uint64_t args[13] = {0};
-    host_call(0x12345678, args);
-    exit(0);
+
     asm volatile("ebreak");
 }
