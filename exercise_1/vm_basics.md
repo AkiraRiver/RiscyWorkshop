@@ -14,13 +14,37 @@ In this exercise we are going to explore the concept of VM obfuscation.
    ```
 2. Run the VM (`./minivm 1 2 3 4`) and do the following exercises:
    - Extract the active VM bytecode (look at the source code, starting from `main` at the bottom).
+   07 04 00 01 06 05 02 03 02 06 04 05 01 06
    - How many registers does the VM have in the context?
+
    - Make a list of all available opcodes, their index and what they do.
+   01 RET(op)
+   02 ADD(dst, op1, op2)
+   03 MOVIMM
+   04 CMP
+   05 JCC
+   06 XOR
+   07 OR
+   08 MUL
    - What does the active VM bytecode do? Write it as C pseudocode.
+   OR(04 00 01)
+   XOR(05 02 03)
+   ADD(03 02 06)
+   RET(06)
+
+   04 <- 0
+   05 <- 0
+   03 <-
+
 3. For this exercise you will write your own bytecode. Look at the commented-out example code to figure out how to do it.
    - Implement a function that adds the first two arguments together: `return a + b`
+   02 (06 01 02)
+   01 (06)
    - Implement a function that multiplies the first two arguments together: `return a * b`
+    08 06 00 01
+    01 06
    - Implement a function that implements: `return a - b`
+
    - Implement a function that implements: `return a == 42 ? 1337 : 0`
 
 If you finish early, here are a few bonus exercises (not required):

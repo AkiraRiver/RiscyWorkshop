@@ -1,0 +1,12 @@
+Make a list of all available opcodes, their index and what they do.
+
+RET(op)                  OPCODE(1), op
+ADD(dst, op1, op2)       OPCODE(2), dst, op1, op2
+MOVIMM(dst, imm64)       OPCODE(3), dst, IMM64(imm64)
+CMP(dst, op1, op2)       OPCODE(4), dst, op1, op2
+JCC(cond, label)         OPCODE(5), cond, label
+XOR(dst, op1, op2)       OPCODE(6), dst, op1, op2
+OR(dst, op1, op2)        OPCODE(7), dst, op1, op2
+MUL(dst, op1, op2)       OPCODE(8), dst, op1, op2
+
+
